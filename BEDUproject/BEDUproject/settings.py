@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 from pathlib import Path
 import os
 from dotenv import load_dotenv
-
+load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -132,6 +132,6 @@ MEDIA_ROOT =  BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-EMAIL_BACKEND = os.getenv("EMAIL_BACKEND")
-SENDGRID_API_KEY =  os.getenv("SENDRID_API_KEY")
-SENDGRID_SANDBOX_MODE_IN_DEBUG = os.getenv("SENDRID_SANDBOX_MODE_IN_DEBUG")
+EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
+SENDGRID_API_KEY = str(os.getenv("SENDRID_API_KEY"))
+SENDGRID_SANDBOX_MODE_IN_DEBUG = False
